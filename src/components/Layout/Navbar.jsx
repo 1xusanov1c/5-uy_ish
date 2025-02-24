@@ -6,21 +6,7 @@ import { apiClient } from '../../utils/apisevis';
 
 const Navbar = () => {
 
-    // const [categories, setCategories] = useState([])
-    // const [category, setCategory] = useState(null)
-
-    // const getCategories = async () => {
-    //     let res = await apiClient({
-    //         url:'/products/category-list'
-    //     })
-        
-    //     setCategories(res?.data)
-    // }
-
-
-    // useEffect(() => {
-    //     getCategories()
-    // }, [])
+    
 
 
     return (
@@ -38,19 +24,7 @@ const Navbar = () => {
                     </Link>
 
                     
-                    {/* <div className='ml-5'>
-                        <select className="border p-2 rounded">
-                            {categories.map((res) => {
-                                return <option key={res}
-                                    onClick={() => {
-                                        setCategory(res)
-                                    }}>
-                                    {res}
-                                </option>
-                            })
-                            }
-                        </select>
-                    </div> */}
+                                  
                 </nav>
 
                 <div className="flex items-center gap-4">
