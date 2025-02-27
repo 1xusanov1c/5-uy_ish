@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CiSearch, CiStar, CiUser } from "react-icons/ci";
-import { FaShoppingBag, FaSearch } from "react-icons/fa";
 import { apiClient } from '../../utils/apisevis';
+import { FaShopify } from 'react-icons/fa6';
+import { ShopContext } from '../../Context/ShopList';
 
 const Navbar = () => {
+    const {shop} = useContext(ShopContext)
 
-    
+
 
 
     return (
@@ -22,24 +24,22 @@ const Navbar = () => {
                     <Link to={"/"} className="ml-5 hover:text-gray-900">
                         Bosh saxifa
                     </Link>
+                    <Link to={"/category"} className="ml-5 hover:text-gray-900">
+                        Kategoriya
+                    </Link>
 
-                    
-                                  
+
+
                 </nav>
 
                 <div className="flex items-center gap-4">
-
-                    <div className="flex items-center bg-gray-800 px-3 py-2 rounded-full">
-                        <input
-                            type="text"
-                            placeholder="Poisk tovarov"
-                            className="bg-transparent outline-none text-sm text-white placeholder-gray-400 flex-1"
-                        />
-                        <FaSearch className="w-5 h-5 text-gray-400 cursor-pointer" />
-                    </div>
                     <CiStar className="w-5 h-5 cursor-pointer text-gray-600 hover:text-gray-900" />
                     <CiUser className="w-5 h-5 cursor-pointer text-gray-600 hover:text-gray-900" />
-                    <FaShoppingBag className="w-5 h-5 cursor-pointer text-gray-600 hover:text-gray-900" />
+                    <button className='flex items-center  '>
+                        <FaShopify className="w-5 h-5 cursor-pointer text-gray-600 hover:text-gray-900" />
+                        <sup className='text-[15px]'>{shop.length}</sup>
+                    </button>
+
                 </div>
             </div>
         </header >

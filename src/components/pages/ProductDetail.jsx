@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { apiClient } from "../../utils/apisevis";
+import { ShopContext } from "../../Context/ShopList";
 
 const ProductDetail = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const { shop, setShop } = useContext(ShopContext)
+
 
     useEffect(() => {
         const getProductDetail = async () => {
@@ -59,7 +62,12 @@ const ProductDetail = () => {
                 <p className="text-sm text-gray-600">Yetkazib berish: {product.shippingInformation}</p>
                 <p className="text-sm text-gray-600">Mavjudlik holati: {product.availabilityStatus}</p>
 
-                <button className="mt-4 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800">
+                <button className="mt-4 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800"
+                    onClick={() => {
+                        let current = [...shop]
+                        current.push(product)
+                        setShop(current)
+                    }}>
                     Savatga qo'shish
                 </button>
 
