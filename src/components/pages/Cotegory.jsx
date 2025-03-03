@@ -13,14 +13,15 @@ const Category = () => {
     const [skip, setSkip] = useState(1)
     const [search, setSearch] = useState(null)
 
-    const { shop, setShop } = useContext(ShopContext)
+    const { pushShop} = useContext(ShopContext)
 
 
     const getProduct = async () => {
         let res = await apiClient({
-            url: category == null ? product + `?limit=21&skip=${(skip - 1) * 20}` : product + `/category/${category}?limit=21&skip=${(skip - 1) * 20} `
-        })
-
+            url: category == null
+                ? `/products?limit=21&skip=${(skip - 1) * 21}`
+                : `/products/category/${category}?limit=21&skip=${(skip - 1) * 21}`
+        });
 
         if (res?.status === 200) {
             setData(res?.data?.products)
@@ -44,16 +45,19 @@ const Category = () => {
         getCategories();
     }, []);
 
-    const searchHandle = async () => {
-        let res = await apiClient({
-            url: `/products/search?q=${search}`
-        })
-        if (res?.status == 200) {
-            setData(res.data.products)
-            createPagination(res.data.total)
-        }
-    }
 
+    const searchHandle = async () => {
+        if (search && search.trim() !== "") {
+            let res = await apiClient({
+                url: `/products/search?q=${search.trim()}`
+            });
+
+            if (res?.status === 200) {
+                setData(res.data.products);
+                createPagination(res.data.total);
+            }
+        }
+    };
     const createPagination = (total) => {
         let current_page = []
         for (let i = 1; i <= Math.ceil(total / 21); i++) {
@@ -65,7 +69,7 @@ const Category = () => {
 
     return (
         <div className="container mx-auto">
-            <div className='grid grid-cols-4 mt-10 mb-10 gap-3'>
+            <div className='grid grid-cols-4 mt-10 mb-10 gap-3 mt-[75px]'>
                 <div className="col-span-1 border rounded-3xl p-3 h-[1300px]">
                     <div className="flex items-center bg-gray-800 px-3 py-2 rounded-full text-white">
                         <input
@@ -103,7 +107,7 @@ const Category = () => {
                         <div className='col-span-3'>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
                                 {data.map((item) => (
-                                    <Link to={`/product-detail/${item.id}`} key={item.id}>
+                                    <Link to={`/product/${item.id}`} key={item.id}>
                                         <div className="rounded-xl hover:shadow-xl p-3 bg-white">
                                             <img
                                                 className="w-full object-contain h-[250px] rounded-lg hover:scale-105 transition-transform duration-300"
@@ -118,9 +122,7 @@ const Category = () => {
                                                 <button className='py-2 px-3 rounded-xl mt-2 bg-green-500 text-white active:bg-green-800'
                                                     onClick={(e) => {
                                                         e.preventDefault();
-                                                        let current = [...shop]
-                                                        current.push(item)
-                                                        setShop(current)
+                                                        pushShop(item)
                                                     }}>
                                                     Sotib olish
                                                 </button>

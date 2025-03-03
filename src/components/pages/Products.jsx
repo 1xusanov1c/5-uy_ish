@@ -12,6 +12,7 @@ import img2 from "../../assets/images/Rectangle 1764.jpg";
 import img3 from "../../assets/images/Rectangle 1765.jpg";
 import img4 from "../../assets/images/Rectangle 1766.jpg";
 import { ShopContext } from '../../Context/ShopList'
+import { Carousel } from 'antd'
 
 
 
@@ -23,6 +24,8 @@ const Products = () => {
     const [total, setTotal] = useState(0)
     const [skip, setSkip] = useState(1)
     const { shop, setShop } = useContext(ShopContext)
+    const { pushShop } = useContext(ShopContext)
+
 
 
     const getProduct = async () => {
@@ -62,12 +65,24 @@ const Products = () => {
 
 
     return (
-        <div className="container mx-auto ">
-            <div>
-                <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full h-[400px] object-cover ">
-                    <SwiperSlide><img className='object-contain' src="https://premkley.ru/data/action.jpg" alt="aksiya" /></SwiperSlide>
-                    <SwiperSlide><img className='' src="https://blog.sf.education/wp-content/uploads/2023/12/1625710906_10-phonoteka-org-p-skidki-art-krasivo-18-1536x864-1.jpg" alt="aksiya" /></SwiperSlide>
-                </Swiper>
+        <div className="container mx-auto  ">
+            <div className='mt-[75px]'>
+                <Carousel
+                    autoplay
+                    autoplaySpeed={3000}
+                    dots={true}
+                    style={{ width: '100%', height: '50vh' }}>
+                    <div>
+                        <img style={{ width: '100%', height: '50vh', objectFit: 'cover' }} src="https://premkley.ru/data/action.jpg" alt="aksiya" />
+                    </div>
+                    <div>
+                        <img style={{ width: '100%', height: '50vh', objectFit: 'cover' }} src="https://blog.sf.education/wp-content/uploads/2023/12/1625710906_10-phonoteka-org-p-skidki-art-krasivo-18-1536x864-1.jpg" alt="aksiya" />
+                    </div>
+                    <div>
+                        <img style={{ width: '100%', height: '50vh', objectFit: 'cover' }} src="https://static.baza.drom.ru/drom/1424503854402_bulletin" alt="aksiya" />
+                    </div>
+
+                </Carousel>
                 <div className='grid grid-cols-4 gap-3  mt-5'>
                     <img src={img1} alt="Product 1" className='h-[250px] w-full ' />
                     <img src={img2} alt="Product 1" className='h-[250px] w-full ' />
@@ -79,24 +94,23 @@ const Products = () => {
                 <div className='flex flex-col '>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-10 mb-10">
                         {data.map((item) => (
-                            <Link to={`/product-detail/${item.id}`} key={item.id}>
+                            <Link to={`/product/${item.id}`} key={item.id}>
                                 <div className="rounded-xl hover:shadow-xl p-3 bg-white">
                                     <img
                                         className="w-full object-contain h-[250px] rounded-lg hover:scale-105 transition-transform duration-300"
-                                        src={item.thumbnail}
-                                        alt={item.title}
+                                        src={item?.thumbnail}
+                                        alt={item?.title}
                                     />
-                                    <p className="mt-2 font-semibold">{item.title}</p>
+                                    <p className="mt-2 font-semibold">{item?.title}</p>
                                     <div className='flex justify-between items-center'>
                                         <p className="text-gray-600">
-                                            Narxi: <span className="font-bold">{item.price}$</span>
+                                            Narxi: <span className="font-bold">{item?.price}$</span>
                                         </p>
                                         <button className='py-2 px-3 rounded-xl mt-2 bg-green-500 text-white active:bg-green-800'
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                let current = [...shop]
-                                                current.push(item)
-                                                setShop(current)
+                                                pushShop(item)
+
                                             }}>
                                             Sotib olish
                                         </button>
