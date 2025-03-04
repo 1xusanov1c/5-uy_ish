@@ -3,6 +3,7 @@ import { ShopContext } from '../../Context/ShopList';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
 import { Col, Row } from 'antd';
 import { MdDeleteOutline } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
   const shoptext = useContext(ShopContext)
@@ -115,9 +116,9 @@ const Shop = () => {
           </div>
 
           <div className='flex justify-center'>
-            <button className="mt-6  items-center bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-blue-600 mb-5">
+            <Link to={"/product"} className="mt-6  items-center bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-blue-600 mb-5">
               Buyurtmani tasdiqlash
-            </button>
+            </Link>
           </div>
 
         </div>
