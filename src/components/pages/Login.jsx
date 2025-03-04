@@ -4,12 +4,14 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 import { apiClient } from "../../utils/apisevis";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null); 
+    const navigate = useNavigate()
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,7 +26,8 @@ const Login = () => {
                 localStorage.setItem("token", accessToken);
                 const refreshToken =res.data.refreshToken;
                 localStorage.setItem("refresh", refreshToken)
-                window.location.href = "/product";
+                // window.location.href = "/product";
+                navigate('/product')
             }
 
     };

@@ -25,6 +25,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='category' element={<Cotegory />} />
             <Route path='shop-list' element={<Shop />} />
             <Route path="profil" element={<Profil />} />
+            
           </Route>
         </Routes>
       </BrowserRouter>
