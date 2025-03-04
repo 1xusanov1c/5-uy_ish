@@ -3,52 +3,60 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white-700 body-font">
-            <div className="container px-5 py-24 mx-auto">
+        <footer className="bg-black text-white body-font">
+            <div className="container px-5 py-10 mx-auto">
                 <div className="flex flex-wrap md:text-left text-center order-first">
+                    
+                    {/* Birinchi ustun */}
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium text-gray-400 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                        <nav className="list-none mb-10">
-                            <li><Link className="text-gray-600 hover:text-white">First Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Second Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Third Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Fourth Link</Link></li>
+                        <h2 className="title-font font-medium text-gray-300 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                        <nav className="list-none mb-4 space-y-2">
+                            <li><Link className="hover:text-gray-400">First Link</Link></li>
+                            <li><Link className="hover:text-gray-400">Second Link</Link></li>
+                            <li><Link className="hover:text-gray-400">Third Link</Link></li>
+                            <li><Link className="hover:text-gray-400">Fourth Link</Link></li>
                         </nav>
                     </div>
+
+                    {/* Ikkinchi ustun */}
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium text-gray-400 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                        <nav className="list-none mb-10">
-                            <li><Link className="text-gray-600 hover:text-white">First Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Second Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Third Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Fourth Link</Link></li>
+                        <h2 className="title-font font-medium text-gray-300 tracking-widest text-sm mb-3">ABOUT</h2>
+                        <nav className="list-none mb-4 space-y-2">
+                            <li><Link className="hover:text-gray-400">Company Info</Link></li>
+                            <li><Link className="hover:text-gray-400">Careers</Link></li>
+                            <li><Link className="hover:text-gray-400">Press</Link></li>
+                            <li><Link className="hover:text-gray-400">Contact</Link></li>
                         </nav>
                     </div>
+
+                    {/* Uchinchi ustun */}
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium text-gray-400 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                        <nav className="list-none mb-10">
-                            <li><Link className="text-gray-600 hover:text-white">First Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Second Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Third Link</Link></li>
-                            <li><Link className="text-gray-600 hover:text-white">Fourth Link</Link></li>
+                        <h2 className="title-font font-medium text-gray-300 tracking-widest text-sm mb-3">HELP</h2>
+                        <nav className="list-none mb-4 space-y-2">
+                            <li><Link className="hover:text-gray-400">FAQs</Link></li>
+                            <li><Link className="hover:text-gray-400">Shipping & Returns</Link></li>
+                            <li><Link className="hover:text-gray-400">Order Tracking</Link></li>
+                            <li><Link className="hover:text-gray-400">Support</Link></li>
                         </nav>
                     </div>
+
+                    {/* To‘rtinchi ustun - Subscribe */}
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium text-gray-400 tracking-widest text-sm mb-3">SUBSCRIBE</h2>
-                        <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
-                            <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
-                                <label htmlFor="footer-field" className="leading-7 text-sm text-gray-600">Placeholder</label>
-                                <input type="text" id="footer-field" name="footer-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            </div>
-                            <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+                        <h2 className="title-font font-medium text-gray-300 tracking-widest text-sm mb-3">SUBSCRIBE</h2>
+                        <div className="flex flex-col items-center md:items-start">
+                            <input type="text" id="footer-field" name="footer-field" placeholder="Email kiriting"
+                                className="w-full bg-gray-800 text-white rounded border border-gray-600 focus:border-indigo-500 text-base py-2 px-3 mb-2"
+                            />
+                            <button className="bg-indigo-500 text-white py-2 px-6 rounded hover:bg-indigo-600">
+                                Subscribe
+                            </button>
                         </div>
-                        <p className="text-gray-500 text-sm mt-2 md:text-left text-center">Bitters chicharrones fanny pack
-                            <br className="lg:block hidden" />waistcoat green juice
+                        <p className="text-gray-400 text-sm mt-2 text-center md:text-left">
+                            Eng so‘ngi yangiliklardan xabardor bo‘ling!
                         </p>
                     </div>
                 </div>
             </div>
-
         </footer>
     );
 }

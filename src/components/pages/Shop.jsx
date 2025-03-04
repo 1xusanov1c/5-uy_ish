@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../../Context/ShopList';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
-import { Col, Row } from 'antd';
 import { MdDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -18,28 +17,30 @@ const Shop = () => {
   }
 
   return (
-    <div className='container mx-auto '>
-      <div className='grid grid-cols-2 mt-[75px]'>
-        <div className=' flex flex-col gap-y-2 px-4 '>
+    <div className='container mx-auto px-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-[75px]'>
+
+        {/* Chap tomondagi mahsulotlar ro'yxati */}
+        <div className='flex flex-col gap-y-2'>
           <div className="max-h-[500px] overflow-y-auto">
             {
               shoptext.shop.map((item, i) => {
-                return <div key={item.id} className=' grid grid-cols-3 bg-[#F5F5F5FF] rounded-xl mb-5 p-3' >
-                  <div className='col-span-1'>
-                    <img src={item.thumbnail} alt={item.title} />
+                return <div key={item.id} className='grid grid-cols-1 sm:grid-cols-3 bg-[#F5F5F5FF] rounded-xl mb-5 p-3' >
+                  <div className='flex justify-center'>
+                    <img src={item.thumbnail} alt={item.title} className="w-32 h-32 object-cover" />
                   </div>
 
                   <div className='col-span-2 mt-2'>
                     <h2 className='text-lg font-semibold'>{item.title}</h2>
 
-                    <div className="flex items-center  bg-gray-300 p-2 rounded-md w-[110px] mt-2">
-                      <button className="px-1 py-1 bg-gray-500 text-white rounded text-center active:bg-gray-800"
+                    <div className="flex items-center bg-gray-300 p-2 rounded-md w-[110px] mt-2">
+                      <button className="px-1 py-1 bg-gray-500 text-white rounded active:bg-gray-800"
                         onClick={() => {
                           shoptext.decr(i)
                         }}
                       ><HiMinusSm /></button>
                       <span className="px-4 text-lg">{item.count}</span>
-                      <button className="px-1 py-1 bg-gray-500 text-white rounded text-center active:bg-gray-800"
+                      <button className="px-1 py-1 bg-gray-500 text-white rounded active:bg-gray-800"
                         onClick={() => {
                           shoptext.incr(i)
                         }}
@@ -48,26 +49,24 @@ const Shop = () => {
 
                     <p className='mt-3'>Kategoriya: {item.category}</p>
 
-                    <div className='flex justify-between p-3 mt-5 '>
+                    <div className='flex justify-between p-3 mt-5'>
                       <p>Narxi: {item.price} $</p>
 
                       <MdDeleteOutline
                         className="w-6 h-6 text-gray-500 cursor-pointer hover:text-gray-800"
                         onClick={() => shoptext.delet(i)} />
                     </div>
-
                   </div>
                 </div>
-
               })
             }
           </div>
-          <div className=" bg-white shadow-lg p-4 rounded-md">
+          <div className="bg-white shadow-lg p-4 rounded-md">
             <p className="text-lg font-semibold">Umumiy summa: {getAllSumm()} $</p>
           </div>
         </div>
 
-
+        {/* O'ng tomondagi buyurtma formasi */}
         <div>
           <p className='text-xl font-semibold'>Buyurtmani rasmiylashtirish</p>
           <div className="mb-3">
@@ -98,7 +97,7 @@ const Shop = () => {
             <input type="text" className="w-full p-2 border rounded-md" placeholder="Ko‘cha nomi" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-700">Uy</label>
               <input type="text" className="w-full p-2 border rounded-md" placeholder="Uy raqami" />
@@ -116,18 +115,15 @@ const Shop = () => {
           </div>
 
           <div className='flex justify-center'>
-            <Link to={"/product"} className="mt-6  items-center bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-blue-600 mb-5">
+            <Link to={"/product"} className="mt-6 flex items-center bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-blue-600 mb-5">
               Buyurtmani tasdiqlash
             </Link>
           </div>
-
         </div>
+
       </div>
-    </div >
-
-
+    </div>
   )
 }
-
 
 export default Shop
